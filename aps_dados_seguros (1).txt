@@ -1,0 +1,102 @@
+# APS – Dados Seguros (Chapada dos Guimarães - MT)
+
+Este repositório reúne **scripts, modelos de dashboard e fluxos de automação** para proteger e tratar com responsabilidade dados sensíveis da Atenção Primária à Saúde (APS), com foco em uso por secretarias municipais de saúde, como em Chapada dos Guimarães - MT.
+
+---
+
+## 🔐 Objetivos
+
+- Garantir **segurança e conformidade com a LGPD** em dados sensíveis de saúde.
+- Estruturar **dashboards anonimizados e auditáveis** com PostgreSQL + Metabase.
+- Automatizar **alertas e relatórios semanais** com n8n.
+- Oferecer uma base segura para gestão territorial da APS.
+
+---
+
+## 📁 Estrutura do Repositório
+
+```bash
+aps-dados-seguros/
+├── sql/
+│   ├── restore_backup.sql
+│   ├── anonimizar_dados.sql
+│   ├── criar_views_publicas.sql
+│   ├── criar_roles_seguranca.sql
+│   └── auditar_acessos.sql
+├── dashboards_metabase/
+│   ├── dashboard_geral.json
+│   ├── dashboard_ubs.json
+│   └── modelo_importacao.metabase
+├── n8n_workflows/
+│   ├── alerta_visitas_baixas.json
+│   ├── relatorio_semanal_email.json
+│   └── bot_perguntas_gpt.json
+├── docs/
+│   ├── checklist_LGPD.md
+│   ├── configuracao_postgresql_seguro.md
+│   ├── politicas_de_backup.md
+│   └── plano_auditoria_dados.md
+├── .env.example
+├── README.md
+└── LICENSE
+```
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **PostgreSQL** (armazenamento seguro dos dados)
+- **Metabase** (visualização e dashboard)
+- **n8n** (automações, alertas e relatórios)
+- **GitHub** (controle de versão e auditoria)
+
+---
+
+## 🧠 Conteúdo Crítico Protegido
+
+Este repositório é estruturado para funcionar com:
+- Bases **anonimizadas** por padrão
+- Scripts de criação de **views públicas seguras**
+- Roles PostgreSQL com **perfis separados** (leitura, edição, administração)
+- Logs de **acesso e auditoria** para rastreabilidade de consultas
+
+---
+
+## 📍 Uso Típico
+
+1. Suba seu PostgreSQL local ou em nuvem (Supabase, Render...)
+2. Execute `restore_backup.sql`, `anonimizar_dados.sql` e `auditar_acessos.sql`
+3. Importe os dashboards no Metabase
+4. Configure os workflows n8n com `.env` de exemplo
+5. Use com segurança e responsabilidade – este é um repositório vivo
+
+---
+
+## ⚙️ Arquivo .env.example (modelo)
+
+```bash
+# Banco de Dados PostgreSQL
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=leitor_dashboard
+DB_PASS=senha_segura
+DB_NAME=aps_chapada
+
+# Metabase
+METABASE_SITE_URL=http://localhost:3000
+METABASE_API_KEY=chave_aqui
+
+# n8n
+N8N_WEBHOOK_URL=https://n8n.seusistema.com/webhook/
+EMAIL_NOTIFICACAO=aps@chapada.mt.gov.br
+```
+
+---
+
+## ✉️ Contato
+Djalma Mascarenhas • Consultor em energia solar e pesquisador de dados sensíveis
+
+---
+
+## 📄 Licença
+Este projeto segue a licença **MIT** por padrão, podendo ser adaptado para uso institucional sob CC-BY-NC-SA.
